@@ -1,18 +1,12 @@
-## Getting Started
+# :memo: ПРАКТИКА ІЗ ООП
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Цей файл для систематизації файлів із кожного завдання та легкої маршрутизації по папкам
 
-## Folder Structure
+## 📈 Мета практики
 
-The workspace contains two folders by default, where:
+Закріпити навички створення класів, використання конструкторів, методів та різних властивостей у Java.
+Навчитися застосовувати базові принципи ООП для застосування у майбутніх проектах.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## 🌐 Маршрутизація проектом
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+ - [Завдання №1](https://github.com/rubanAlexUa/practice/blob/main/Tasks%20descriptions/Task%20%E2%84%961/Task%20%E2%84%961.md)
