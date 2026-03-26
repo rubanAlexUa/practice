@@ -13,6 +13,4 @@
 
 ![Код програми](https://github.com/rubanAlexUa/practice/blob/main/Tasks%20descriptions/Task%20%E2%84%961/images/test%201.png)
 
-## Тест програми із переданими даними
-
 ![Код програми](https://github.com/rubanAlexUa/practice/blob/main/Tasks%20descriptions/Task%20%E2%84%961/images/test%202.png)
