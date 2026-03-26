@@ -10,3 +10,5 @@
 ## 🌐 Маршрутизація проектом
 
  - [Завдання №1](https://github.com/rubanAlexUa/practice/blob/main/Tasks%20descriptions/Task%20%E2%84%961/Task%20%E2%84%961.md)
+ - [Завдання №2](https://github.com/rubanAlexUa/practice/blob/main/Tasks%20descriptions/Task%20%E2%84%962/Task%20%E2%84%962.md)
+
