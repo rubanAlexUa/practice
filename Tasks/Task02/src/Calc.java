@@ -37,16 +37,6 @@ public class Calc {
         System.out.println(result);
     }
 
-    /**
-     * Зберігає у файл
-     */
-    public void save() throws IOException {
-        ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(FNAME));
-        os.writeObject(result);
-        os.flush();
-        os.close();
-    }
-
     /* Відновлює з файлу */
     public void restore() throws Exception {
         ObjectInputStream is = new ObjectInputStream(new FileInputStream(FNAME));

@@ -12,7 +12,7 @@ public class Main {
         Scanner in = new Scanner(System.in);
         String s;
         do {
-            System.out.println("\nКоманди: 'q'uit, 'v'iew, 'g'enerate, 's'ave, 'r'estore");
+            System.out.println("\nКоманди: 'q'uit, 'v'iew, 'g'enerate, 'r'estore");
             System.out.print("Введіть команду: ");
             s = in.nextLine();
 
@@ -33,14 +33,6 @@ public class Main {
                     double u3 = Math.random() * 50;
                     calc.init(I, u1, u2, u3);
                     calc.show();
-                    break;
-                case 's':
-                    try {
-                        calc.save();
-                        System.out.println("Збережено!");
-                    } catch (IOException e) {
-                        System.out.println("Помилка: " + e);
-                    }
                     break;
                 case 'r':
                     try {
