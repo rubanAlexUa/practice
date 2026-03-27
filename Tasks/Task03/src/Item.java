@@ -4,8 +4,13 @@ public class Item implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    // Струм
     private double current;
+
+    // Напруга
     private double u1, u2, u3;
+
+    // Опір
     private transient double resistance;
 
     public Item() {
@@ -51,6 +56,7 @@ public class Item implements Serializable {
         this.resistance = resistance;
     }
 
+    // Розрахунок опору
     public void recalculate() {
         if (current != 0)
             resistance = (u1 + u2 + u3) / current;

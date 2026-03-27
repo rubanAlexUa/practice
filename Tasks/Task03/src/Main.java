@@ -4,6 +4,9 @@ public class Main {
 
     private Calc calc = new Calc();
 
+    /*
+     * Метод для меню, зчитує яку кнопку нажав, та виконує відповідну дую
+     */
     private void menu() {
         Scanner in = new Scanner(System.in);
         String s;

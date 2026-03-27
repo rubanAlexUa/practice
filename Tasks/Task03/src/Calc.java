@@ -6,6 +6,7 @@ public class Calc implements ViewFactory {
 
     private static final String FNAME = "Item.txt";
 
+    // Список усіх записів
     private ArrayList<Item> items = new ArrayList<>();
 
     public Item getResult() {
@@ -14,6 +15,7 @@ public class Calc implements ViewFactory {
         return items.get(items.size() - 1);
     }
 
+    // Задавання значень для змінних
     public double init(double current, double u1, double u2, double u3) {
         Item result = new Item();
         result.setCurrent(current);
@@ -31,6 +33,7 @@ public class Calc implements ViewFactory {
         return new TextItemView();
     }
 
+    // Виводимо усі записи
     public void show() {
         if (items.isEmpty()) {
             System.out.println("Колекція порожня.");
@@ -41,13 +44,16 @@ public class Calc implements ViewFactory {
             view.show(item);
     }
 
+    // Вводе усі записи у файл
     public void save() throws Exception {
-        PrintWriter pw = new PrintWriter(new FileWriter(FNAME));
+        PrintWriter writer = new PrintWriter(new FileWriter(FNAME));
         for (Item item : items)
-            pw.println(item);
-        pw.close();
+            writer.printf("%.4f %.4f %.4f %.4f%n",
+                    item.getCurrent(), item.getU1(), item.getU2(), item.getU3());
+        writer.close();
     }
 
+    // Зчитує записи з файлу
     public void restore() throws Exception {
         items.clear();
         Scanner sc = new Scanner(new File(FNAME));
