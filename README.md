@@ -1,4 +1,4 @@
-# :memo: ПРАКТИКА ІЗ ООП
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/c759be89-21aa-4b8d-a065-ee3a06c54cfb" /># :memo: ПРАКТИКА ІЗ ООП
 
 Цей файл для систематизації файлів із кожного завдання та легкої маршрутизації по папкам
 
@@ -12,3 +12,4 @@
  - [Завдання №1](https://github.com/rubanAlexUa/practice/blob/main/Tasks%20descriptions/Task%20%E2%84%961/Task%20%E2%84%961.md)
  - [Завдання №2](https://github.com/rubanAlexUa/practice/blob/main/Tasks%20descriptions/Task%20%E2%84%962/Task%20%E2%84%962.md)
  - [Завдання №3](https://github.com/rubanAlexUa/practice/blob/main/Tasks%20descriptions/Task%20%E2%84%963/Task%20%E2%84%963.md)
+ - [Завдання №4](https://github.com/rubanAlexUa/practice/blob/main/Tasks%20descriptions/Task%20%E2%84%964/Task%20%E2%84%964.md)
