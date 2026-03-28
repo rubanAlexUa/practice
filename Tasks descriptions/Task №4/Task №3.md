@@ -1,4 +1,4 @@
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/5d5736b0-df1b-4b51-96c3-df7c44129204" /># Завдання №4: Поліморфізм
+# Завдання №4: Поліморфізм
 
 Згідно цього завдання потрібно було:
 
