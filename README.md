@@ -1,4 +1,4 @@
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/c759be89-21aa-4b8d-a065-ee3a06c54cfb" /># :memo: ПРАКТИКА ІЗ ООП
+# :memo: ПРАКТИКА ІЗ ООП
 
 Цей файл для систематизації файлів із кожного завдання та легкої маршрутизації по папкам
 
