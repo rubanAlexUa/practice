@@ -14,3 +14,4 @@
  - [Завдання №3](https://github.com/rubanAlexUa/practice/blob/main/Tasks%20descriptions/Task%20%E2%84%963/Task%20%E2%84%963.md)
  - [Завдання №4](https://github.com/rubanAlexUa/practice/blob/main/Tasks%20descriptions/Task%20%E2%84%964/Task%20%E2%84%964.md)
  - [Завдання №5](https://github.com/rubanAlexUa/practice/blob/main/Tasks%20descriptions/Task%20%E2%84%965/Task%20%E2%84%965.md)
+ - [Завдання №6](https://github.com/rubanAlexUa/practice/blob/main/Tasks%20descriptions/Task%20%E2%84%966/Task%20%E2%84%966.md)
