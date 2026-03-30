@@ -20,4 +20,6 @@
 
 # Тести програми
 **Як працюють нові функції**
-![фото проведення функцій](https://github.com/rubanAlexUa/practice/blob/main/Tasks%20descriptions/Task%20%E2%84%964/images/Test%20result.png)
+![фото проведення функцій](https://github.com/rubanAlexUa/practice/blob/main/Tasks%20descriptions/Task%20%E2%84%965/images/Test%201.png)
+
+![фото проведення функцій](https://github.com/rubanAlexUa/practice/blob/main/Tasks%20descriptions/Task%20%E2%84%965/images/Test%202.png)
