@@ -129,4 +129,9 @@ public class Calc implements ViewFactory {
         }
         sc.close();
     }
+
+    public void clear() {
+        items.clear();
+        history.clear();
+    }
 }

@@ -7,6 +7,7 @@ public class AppTest {
         testUndo();
         testMacro();
         System.out.println("--- Кінець тестів ---\n");
+        Calc.getInstance().clear();
     }
 
     // перевіряємо чи правильно рахується опір
@@ -24,7 +25,6 @@ public class AppTest {
     // перевіряємо undo
     private static void testUndo() {
         Calc calc = Calc.getInstance();
-        int before = calc.getResult() == null ? 0 : 1;
         AddItemCommand cmd = new AddItemCommand(calc, 3.0, 10.0, 10.0, 10.0);
         calc.executeCommand(cmd);
         calc.undoLast();

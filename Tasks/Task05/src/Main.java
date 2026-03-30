@@ -31,7 +31,7 @@ public class Main {
                     double u1 = Math.random() * 50;
                     double u2 = Math.random() * 50;
                     double u3 = Math.random() * 50;
-                    calc.init(I, u1, u2, u3);
+                    calc.executeCommand(new AddItemCommand(calc, I, u1, u2, u3));
                     calc.show();
                     break;
                 case 'u':
