@@ -1,6 +1,4 @@
-/**
- * Виводить результати у вигляді текстової таблиці.
- */
+
 public class TextItemView implements ItemView {
 
     private boolean showOct;

@@ -2,9 +2,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- * Калькулятор опору. Реалізує ViewFactory.
- */
 public class Calc implements ViewFactory {
 
     private static final String FNAME = "Item.txt";

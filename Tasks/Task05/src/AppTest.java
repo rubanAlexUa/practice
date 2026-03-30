@@ -1,4 +1,3 @@
-// тести для перевірки роботи програми
 public class AppTest {
 
     public static void runTests() {
