@@ -3,7 +3,9 @@
  */
 public class AppTest {
 
-    /** Запускає всі тести */
+    /**
+     * Запускає всі тести
+     */
     public static void runTests() {
         System.out.println("--- Початок тестів ---");
         testCalc();
@@ -11,7 +13,9 @@ public class AppTest {
         System.out.println("--- Кінець тестів ---\n");
     }
 
-    /** Тест обчислення опору */
+    /**
+     * Тест обчислення опору
+     */
     private static void testCalc() {
         Calc calc = new Calc();
         double r = calc.init(2.0, 10.0, 10.0, 10.0);
@@ -23,7 +27,9 @@ public class AppTest {
         }
     }
 
-    /** Тест виводу через ItemView — поліморфізм */
+    /**
+     * Тест виводу через ItemView — поліморфізм
+     */
     private static void testView() {
         Item item = new Item();
         item.setCurrent(2.0);

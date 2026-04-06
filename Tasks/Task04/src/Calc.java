@@ -3,55 +3,98 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Калькулятор опору. Реалізує ViewFactory.
+ * Клас для обрахунків та виконання дій, як-от: Вивід результатів,
+ * створення нового об'єкту, збереження у текстовий файл та відновлення змінних
+ * із файлу ітд.
+ * 
+ * @author Alex Ruban
  */
 public class Calc implements ViewFactory {
 
+    /**
+     * Ім'я файлу для збереження значень, відповідно і серіалізації {@link Item}.
+     */
     private static final String FNAME = "Item.txt";
 
-    // список всіх обчислень
+    /**
+     * Список усіх записів {@link Item}
+     */
     private ArrayList<Item> items = new ArrayList<>();
 
-    // налаштування відображення
+    /**
+     * Прапорець відображення опору у вісімковій системі
+     */
     private boolean showOct = true;
+
+    /**
+     * Прапорець відображення опору у шістнадцятковій системі
+     */
     private boolean showHex = true;
 
+    /**
+     * Встановлює чи показувати опір у вісімковій системі чи ні
+     * 
+     * @param v {@code true} - показувати, {@code false} - не показувати
+     */
     public void setShowOct(boolean v) {
         showOct = v;
     }
 
+    /**
+     * Встановлює чи показувати опір у шістнадцятковій системі чи ні
+     * 
+     * @param v {@code true} - показувати, {@code false} - не показувати
+     */
     public void setShowHex(boolean v) {
         showHex = v;
     }
 
+    /**
+     * Якщо об'єкт пустий, то повертає новий пустий об'єкт, інакше повертає останній
+     * доданий об'єкт {@link Item} зі списку.
+     * 
+     * @return останній доданий об'єкт або пустий об'єкт
+     */
     public Item getResult() {
         if (items.isEmpty())
             return new Item();
         return items.get(items.size() - 1);
     }
 
-    /** Рахуємо опір і додаємо в список */
+    /**
+     * Метод для обчислення опору, та встановлення нових значень змінних.
+     * 
+     * @param current сила струму (А)
+     * @param u1      перша напруга (В)
+     * @param u2      друга напруга (В)
+     * @param u3      третя напруга (В)
+     * @return новий опір (Ом)
+     */
     public double init(double current, double u1, double u2, double u3) {
         Item result = new Item();
         result.setCurrent(current);
         result.setU1(u1);
         result.setU2(u2);
         result.setU3(u3);
-        double r = (u1 + u2 + u3) / current;
-        result.setResistance(r);
+        double resistance = (u1 + u2 + u3) / current;
+        result.setResistance(resistance);
         items.add(result);
-        return r;
+        return resistance;
     }
 
     /**
-     * Фабричний метод — повертає TextItemView з поточними налаштуваннями
+     * Створює та повертає {@link ItemView} для виводу об'єктів {@link Item}.
+     *
+     * @return новий екземпляр {@link TextItemView}
      */
     @Override
     public ItemView createView() {
         return new TextItemView(showOct, showHex);
     }
 
-    /** Виводимо всі записи у вигляді таблиці */
+    /**
+     * Виводить поточні значення об'єкту {@link Item} у вигляді таблиці в консоль
+     */
     public void show() {
         if (items.isEmpty()) {
             System.out.println("Колекція порожня.");
@@ -64,7 +107,11 @@ public class Calc implements ViewFactory {
         view.showFooter();
     }
 
-    /** Зберігаємо в файл */
+    /**
+     * Зберігає усі об'єкти {@link Item} у текстовий файл {@value #FNAME}.
+     *
+     * @throws Exception якщо не вдалося записати файл
+     */
     public void save() throws Exception {
         PrintWriter writer = new PrintWriter(new FileWriter(FNAME));
         for (Item item : items)
@@ -73,7 +120,13 @@ public class Calc implements ViewFactory {
         writer.close();
     }
 
-    /** Зчитуємо з файлу */
+    /**
+     * Виймає значення із текстового файлу {@value #FNAME}, та оновлює список
+     * об'єктів
+     * {@link Item}
+     * 
+     * @throws Exception якщо файл пошкоджено або не знайдено
+     */
     public void restore() throws Exception {
         items.clear();
         Scanner sc = new Scanner(new File(FNAME));
