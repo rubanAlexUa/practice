@@ -1,18 +1,29 @@
-import java.io.*;
 import java.util.Scanner;
 
 /**
- * Головний клас з меню.
+ * Головний клас із текстовим меню, та можливістю взаємодіяти із ним.
  */
 public class Main {
 
+    /**
+     * Екземпляр класу {@link Calc} для обрахунків та зберігання результатів.
+     */
     private Calc calc = new Calc();
 
+    /**
+     * Метод запускає меню, та обробляє команди задані користувачем.
+     * Доступні такі команди:
+     * {@code q} — вийти із програми,
+     * {@code v} — показати поточні результати обрахунків,
+     * {@code g} — згенерувати рандомні значення для об'єкту,
+     * {@code s} — зберегти поточний об'єкт у бінарний файл,
+     * {@code r} — відновити значення із файлу у поточний об'єкт.
+     */
     private void menu() {
         Scanner in = new Scanner(System.in);
         String s;
         do {
-            System.out.println("\nКоманди: 'q'uit, 'v'iew, 'g'enerate, 'r'estore");
+            System.out.println("\nКоманди: 'q'uit, 'v'iew, 'g'enerate, 's'ave, 'r'estore");
             System.out.print("Введіть команду: ");
             s = in.nextLine();
 
@@ -34,10 +45,18 @@ public class Main {
                     calc.init(I, u1, u2, u3);
                     calc.show();
                     break;
+                case 's':
+                    try {
+                        calc.save();
+                        System.out.println("Збережено!");
+                    } catch (Exception e) {
+                        System.out.println("Помилка збереження: " + e);
+                    }
+                    break;
                 case 'r':
                     try {
                         calc.restore();
-                        System.out.println("Відновлено! resistance (transient) = " + calc.getResult().getResistance());
+                        System.out.println("Відновлено!");
                         calc.show();
                     } catch (Exception e) {
                         System.out.println("Помилка: " + e);
@@ -49,6 +68,11 @@ public class Main {
         } while (s.charAt(0) != 'q');
     }
 
+    /**
+     * Початок роботи програми
+     * 
+     * @param args аргументи командного рядка (не використовуються)
+     */
     public static void main(String[] args) {
         new Main().menu();
     }
