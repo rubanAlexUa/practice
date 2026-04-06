@@ -81,6 +81,7 @@ public class Calc {
     public void restore() throws Exception {
         try (ObjectInputStream is = new ObjectInputStream(new FileInputStream(FNAME))) {
             result = (Item) is.readObject();
+            this.init(result.getCurrent(), result.getU1(), result.getU2(), result.getU3());
         }
     }
 }
