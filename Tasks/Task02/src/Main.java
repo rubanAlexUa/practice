@@ -2,6 +2,8 @@ import java.util.Scanner;
 
 /**
  * Головний клас із текстовим меню, та можливістю взаємодіяти із ним.
+ * 
+ * @author Alex Ruban
  */
 public class Main {
 

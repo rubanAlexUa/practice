@@ -3,6 +3,8 @@ import java.io.Serializable;
 /**
  * Клас для збереження значень сили струму, напруг та опору
  * Реалізує {@link Serializable} для збереження об'єкту у бінарний файл
+ * 
+ * @author Alex Ruban
  */
 public class Item implements Serializable {
     /**
