@@ -1,5 +1,11 @@
+/**
+ * Клас для тестування основної функціональності.
+ */
 public class AppTest {
 
+    /**
+     * Запускає всі тести
+     */
     public static void runTests() {
         System.out.println("--- Початок тестів ---");
         testCalc();
@@ -9,11 +15,13 @@ public class AppTest {
         Calc.getInstance().clear();
     }
 
-    // перевіряємо чи правильно рахується опір
+    /**
+     * Тест обчислення опору
+     */
     private static void testCalc() {
         Calc calc = Calc.getInstance();
         double r = calc.init(2.0, 10.0, 10.0, 10.0);
-        // (10+10+10)/2 = 15
+        // тобто r = (10+10+10)/2 = 15 повинно бути, інаше ж помилка
         if (r == 15.0) {
             System.out.println("testCalc: OK, R=" + r);
         } else {
@@ -21,7 +29,9 @@ public class AppTest {
         }
     }
 
-    // перевіряємо undo
+    /**
+     * Перевіряє роботу команди скасування (undo).
+     */
     private static void testUndo() {
         Calc calc = Calc.getInstance();
         AddItemCommand cmd = new AddItemCommand(calc, 3.0, 10.0, 10.0, 10.0);
@@ -30,7 +40,9 @@ public class AppTest {
         System.out.println("testUndo: OK");
     }
 
-    // перевіряємо макрокоманду
+    /**
+     * Перевіряє роботу макрокоманди
+     */
     private static void testMacro() {
         Calc calc = Calc.getInstance();
         MacroCommand macro = new MacroCommand();
