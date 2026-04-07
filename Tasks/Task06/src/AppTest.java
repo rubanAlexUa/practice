@@ -3,10 +3,13 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Тестування розроблених класів.
+ * Клас для тестування основної функціональності.
  */
 public class AppTest {
 
+    /**
+     * Запускає всі тести
+     */
     public static void runTests() {
         System.out.println("--- Початок тестів ---");
         testCalc();
@@ -21,15 +24,23 @@ public class AppTest {
         Calc.getInstance().clear();
     }
 
-    // --- тести ---
-
+    /**
+     * Тест обчислення опору
+     */
     private static void testCalc() {
         Calc calc = Calc.getInstance();
         double r = calc.init(2.0, 10.0, 10.0, 10.0);
-        assert r == 15.0 : "testCalc FAILED";
-        System.out.println("testCalc: OK, R=" + r);
+        // тобто r = (10+10+10)/2 = 15 повинно бути, інаше ж помилка
+        if (r == 15.0) {
+            System.out.println("testCalc: OK, R=" + r);
+        } else {
+            System.out.println("testCalc: помилка, отримано R=" + r);
+        }
     }
 
+    /**
+     * Перевіряє роботу команди скасування (undo).
+     */
     private static void testUndo() {
         Calc calc = Calc.getInstance();
         AddItemCommand cmd = new AddItemCommand(calc, 3.0, 10.0, 10.0, 10.0);
@@ -38,6 +49,9 @@ public class AppTest {
         System.out.println("testUndo: OK");
     }
 
+    /**
+     * Перевіряє роботу макрокоманди
+     */
     private static void testMacro() {
         Calc calc = Calc.getInstance();
         MacroCommand macro = new MacroCommand();
@@ -48,8 +62,11 @@ public class AppTest {
         System.out.println("testMacro: OK");
     }
 
-    // --- тести для Worker Thread ---
-
+    /**
+     * Створює тестову колекцію з 5 елементів із відомими значеннями опору.
+     *
+     * @return тестова колекція {@link Item}
+     */
     private static List<Item> makeSample() {
         List<Item> list = new ArrayList<>();
         double[][] data = {
@@ -71,6 +88,9 @@ public class AppTest {
         return list;
     }
 
+    /**
+     * Перевіряє {@link MaxCommand}, де очікується елемент з індексом 2 (R=90).
+     */
     private static void testMaxCommand() {
         MaxCommand cmd = new MaxCommand(makeSample());
         cmd.execute();
@@ -78,6 +98,9 @@ public class AppTest {
         System.out.println("testMaxCommand: OK (індекс=" + cmd.getResultIndex() + ")");
     }
 
+    /**
+     * Перевіряє {@link MinCommand}: очікується елемент з індексом 3 (R=3).
+     */
     private static void testMinCommand() {
         MinCommand cmd = new MinCommand(makeSample());
         cmd.execute();
@@ -85,6 +108,9 @@ public class AppTest {
         System.out.println("testMinCommand: OK (індекс=" + cmd.getResultIndex() + ")");
     }
 
+    /**
+     * Перевіряє {@link AvgCommand}: середнє значення має бути більше нуля.
+     */
     private static void testAvgCommand() {
         AvgCommand cmd = new AvgCommand(makeSample());
         cmd.execute();
@@ -92,6 +118,10 @@ public class AppTest {
         System.out.printf("testAvgCommand: OK (avg=%.2f)%n", cmd.getResult());
     }
 
+    /**
+     * Перевіряє {@link FilterCommand}: з порогом 10.0 очікується 4 елементи з R >
+     * 10.
+     */
     private static void testFilterCommand() {
         List<Item> sample = makeSample();
         FilterCommand cmd = new FilterCommand(sample, 10.0);
@@ -101,6 +131,11 @@ public class AppTest {
         System.out.println("testFilterCommand: OK (знайдено=" + cmd.getFiltered().size() + ")");
     }
 
+    /**
+     * Перевіряє роботу {@link CommandQueue}: паралельне виконання
+     * {@link MaxCommand}
+     * та {@link AvgCommand} через чергу Worker Thread.
+     */
     private static void testCommandQueue() {
         List<Item> sample = makeSample();
         MaxCommand maxCmd = new MaxCommand(sample);

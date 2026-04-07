@@ -3,29 +3,63 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Відбирає елементи, у яких опір перевищує поріг.
+ * Команда для відбору елементів {@link Item}, у яких опір перевищує заданий
+ * поріг, заданий середнім арефметичним.
  */
 public class FilterCommand implements WorkerCommand {
 
+    /**
+     * Список елементів для фільтрації.
+     */
     private final List<Item> items;
+
+    /**
+     * Поріг опору (Ом).
+     */
     private final double threshold;
+
+    /**
+     * Список елементів, що пройшли фільтр.
+     */
     private final List<Item> filtered = new ArrayList<>();
+
+    /**
+     * Прогрес виконання у відсотках (0–100).
+     */
     private int progress = 0;
 
+    /**
+     * Конструктор команди фільтрації.
+     *
+     * @param items     список елементів {@link Item}
+     * @param threshold поріг опору (Ом)
+     */
     public FilterCommand(List<Item> items, double threshold) {
         this.items = items;
         this.threshold = threshold;
     }
 
+    /**
+     * Повертає список елементів, що пройшли фільтр після виконання команди.
+     *
+     * @return відфільтровані елементи
+     */
     public List<Item> getFiltered() {
         return filtered;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean running() {
         return progress < 100;
     }
 
+    /**
+     * Виконує фільтрацію списку за порогом опору.
+     * Оновлює прогрес виконання після кожного кроку.
+     */
     @Override
     public void execute() {
         progress = 0;
@@ -49,6 +83,11 @@ public class FilterCommand implements WorkerCommand {
                 filtered.size(), threshold);
     }
 
+    /**
+     * Затримує виконання для імітації тривалої обробки.
+     *
+     * @param size кількість елементів у списку (визначає тривалість затримки)
+     */
     private void sleep(int size) {
         try {
             TimeUnit.MILLISECONDS.sleep(Math.max(1, 1000 / size));

@@ -1,20 +1,43 @@
 import java.util.Scanner;
 
 /**
- * Головний клас з меню.
+ * Головний клас із текстовим меню, та можливістю взаємодіяти із ним.
+ * 
+ * @author Alex Ruban
  */
 public class Main {
 
+    /**
+     * Отримує єдиний екземпляр {@link Calc} (Singleton) для обрахунків та
+     * зберігання результатів.
+     */
     private Calc calc = Calc.getInstance();
 
+    /**
+     * Метод запускає меню, та обробляє команди задані користувачем.
+     * Доступні такі команди:
+     * <ul>
+     * <li>{@code q} — вийти із програми,</li>
+     * <li>{@code v} — показати поточні результати обрахунків,</li>
+     * <li>{@code g} — згенерувати рандомні значення та додає новий об'єкт із ними
+     * до списку,</li>
+     * <li>{@code s} — зберегти поточний об'єкт у текстовий файл,</li>
+     * <li>{@code r} — відновити значення із файлу у поточний об'єкт.</li>
+     * <li>{@code t} — варіант показу HEX чи OCT, чи оба.</li>
+     * <li>{@code u} — відміняється останні запис(дія).</li>
+     * <li>{@code m} — макро подія, створюється три нових записа.</li>
+     * <li>{@code e} — паралельний розрахунок середнього, максимального та
+     * мінімального значень</li>
+     * </ul>
+     */
     private void menu() {
         Scanner in = new Scanner(System.in);
-        String s;
+        String s = "";
         do {
             System.out.println(
                     "\nКоманди: 'q'uit, 'v'iew, 'g'enerate,  'u'ndo, 'm'acro, 'r'estore, 's'ave, 't'able settings, 'e'xecute ");
             System.out.print("Введіть команду: ");
-            s = in.nextLine();
+            s = in.nextLine().trim();
 
             if (s.length() != 1)
                 continue;
@@ -35,12 +58,10 @@ public class Main {
                     calc.show();
                     break;
                 case 'u':
-                    // скасовуємо останню команду
                     calc.undoLast();
                     calc.show();
                     break;
                 case 'm':
-                    // макрокоманда — генеруємо 3 записи за раз
                     MacroCommand macro = new MacroCommand();
                     for (int i = 0; i < 3; i++) {
                         macro.addCommand(new AddItemCommand(calc,
@@ -83,9 +104,14 @@ public class Main {
                 default:
                     System.out.println("Невідома команда.");
             }
-        } while (s.charAt(0) != 'q');
+        } while (s.length() == 0 || s.charAt(0) != 'q');
     }
 
+    /**
+     * Запускає тести та меню
+     * 
+     * @param args аргументи командного рядка (не використовуються)
+     */
     public static void main(String[] args) {
         AppTest.runTests();
         new Main().menu();

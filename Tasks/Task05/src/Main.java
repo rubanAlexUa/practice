@@ -56,12 +56,10 @@ public class Main {
                     calc.show();
                     break;
                 case 'u':
-                    // скасовуємо останню команду
                     calc.undoLast();
                     calc.show();
                     break;
                 case 'm':
-                    // макрокоманда — генеруємо 3 записи за раз
                     MacroCommand macro = new MacroCommand();
                     for (int i = 0; i < 3; i++) {
                         macro.addCommand(new AddItemCommand(calc,

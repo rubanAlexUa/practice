@@ -2,25 +2,38 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Консольна команда 'e'xecute.
- * Створює дві черги потоків і паралельно запускає обробку колекції.
+ * Консольна команда {@code 'e'xecute}.
+ * Паралельно запускає обробку списку у двох чергах Worker Thread:
+ * перша черга шукає максимум і мінімум, друга — обчислює середнє та виконує
+ * фільтрацію.
  */
 public class ExecuteWorkerCommand implements Command {
 
+    /**
+     * Список елементів {@link Item} для обробки.
+     */
     private final List<Item> items;
 
+    /**
+     * Конструктор команди для паралельної обробки.
+     *
+     * @param items список елементів {@link Item}
+     */
     public ExecuteWorkerCommand(List<Item> items) {
         this.items = items;
     }
 
+    /**
+     * Запускає паралельну обробку списку у двох чергах Worker Thread.
+     * Метод блокується до завершення всіх задач, потім виводить підсумок у консоль.
+     */
     @Override
     public void execute() {
         if (items.isEmpty()) {
-            System.out.println("Колекція порожня. Спочатку згенеруйте дані");
+            System.out.println("Список порожній. Спочатку згенеруйте дані");
             return;
         }
 
-        // Задачі
         MaxCommand maxCmd = new MaxCommand(items);
         MinCommand minCmd = new MinCommand(items);
         AvgCommand avgCmd = new AvgCommand(items);
@@ -50,7 +63,6 @@ public class ExecuteWorkerCommand implements Command {
             Thread.currentThread().interrupt();
         }
 
-        // Виводимо підсумок
         System.out.println("\n--- Результати ---");
         if (maxCmd.getResult() != null)
             System.out.println("Максимум: " + maxCmd.getResult());
@@ -61,7 +73,12 @@ public class ExecuteWorkerCommand implements Command {
                 avgCmd_threshold(items), filterCmd.getFiltered().size());
     }
 
-    /** Поріг для фільтра = середнє арифметичне опорів */
+    /**
+     * Обчислює середнє арифметичне опорів списку як поріг для фільтрації.
+     *
+     * @param items список елементів {@link Item}
+     * @return середній опір (Ом) або {@code 0.0} якщо список порожній
+     */
     private double avgCmd_threshold(List<Item> items) {
         double sum = 0;
         for (Item it : items)
@@ -69,7 +86,10 @@ public class ExecuteWorkerCommand implements Command {
         return items.isEmpty() ? 0 : sum / items.size();
     }
 
+    /**
+     * Не застосовується для цієї команди.
+     */
     @Override
     public void undo() {
-        /* не застосовується */ }
+    }
 }

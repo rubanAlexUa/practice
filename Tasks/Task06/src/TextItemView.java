@@ -1,12 +1,18 @@
 /**
- * Виводить результати у вигляді текстової таблиці.
+ * Текстова реалізація {@link ItemView}
+ * Виводить об'єкт {@link Item}
  */
 public class TextItemView implements ItemView {
 
+    /**
+     * Прапорці для показу опору у вісімкової або шістнадцяткової системи
+     */
     private boolean showOct;
     private boolean showHex;
 
-    /** Конструктор за замовчуванням */
+    /**
+     * Конструктор, що за замовчуванням показує і HEX i OCT
+     */
     public TextItemView() {
         this.showOct = true;
         this.showHex = true;
@@ -23,7 +29,9 @@ public class TextItemView implements ItemView {
         this.showHex = showHex;
     }
 
-    /** Виводить заголовок таблиці */
+    /**
+     * Виводить заголовок таблиці
+     */
     public void showHeader() {
         String line = "+----------+----------+----------+----------+----------+";
         String header = "| I (A)    | U1 (V)   | U2 (V)   | U3 (V)   | R (Ohm)  |";
@@ -40,7 +48,9 @@ public class TextItemView implements ItemView {
         System.out.println(line);
     }
 
-    /** Виводить нижню лінію */
+    /**
+     * Виводить нижню лінію
+     */
     public void showFooter() {
         String line = "+----------+----------+----------+----------+----------+";
         if (showOct)
