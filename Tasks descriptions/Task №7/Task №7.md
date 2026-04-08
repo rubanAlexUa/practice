@@ -11,8 +11,8 @@
 
 _Графік без записів_
 
-![Пустий графік без записів](https://github.com/rubanAlexUa/practice/blob/main/Tasks%20descriptions/Task%20%E2%84%967%20copy/images/%D0%9F%D1%83%D1%81%D1%82%D0%B8%D0%B9%20%D0%B3%D1%80%D0%B0%D1%84%D1%96%D0%BA.png)
+![Пустий графік без записів](https://github.com/rubanAlexUa/practice/blob/main/Tasks%20descriptions/Task%20%E2%84%967/images/%D0%9F%D1%83%D1%81%D1%82%D0%B8%D0%B9%20%D0%B3%D1%80%D0%B0%D1%84%D1%96%D0%BA.png)
 
 _Графік із записами_
 
-![Графік із записами](https://github.com/rubanAlexUa/practice/blob/main/Tasks%20descriptions/Task%20%E2%84%967%20copy/images/%D0%9D%D0%B5%D0%BF%D1%83%D1%81%D1%82%D0%B8%D0%B9%20%D0%B3%D1%80%D0%B0%D1%84%D1%96%D0%BA.png)
+![Графік із записами](https://github.com/rubanAlexUa/practice/blob/main/Tasks%20descriptions/Task%20%E2%84%967/images/%D0%9D%D0%B5%D0%BF%D1%83%D1%81%D1%82%D0%B8%D0%B9%20%D0%B3%D1%80%D0%B0%D1%84%D1%96%D0%BA.png)
