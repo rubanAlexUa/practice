@@ -31,7 +31,7 @@ public class MainGUI extends JFrame {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                малюємо(g);
+                draw(g);
             }
         };
         chart.setBackground(Color.WHITE);
@@ -50,24 +50,24 @@ public class MainGUI extends JFrame {
         add.addActionListener(e -> {
             calc.init(1 + Math.random() * 4,
                     Math.random() * 50, Math.random() * 50, Math.random() * 50);
-            оновити();
+            updateG();
         });
         undo.addActionListener(e -> {
             calc.removeLast();
-            оновити();
+            updateG();
         });
         clear.addActionListener(e -> {
             calc.clear();
-            оновити();
+            updateG();
         });
 
-        JPanel низ = new JPanel();
-        низ.add(add);
-        низ.add(undo);
-        низ.add(clear);
+        JPanel down = new JPanel();
+        down.add(add);
+        down.add(undo);
+        down.add(clear);
 
         add(chart, BorderLayout.CENTER);
-        add(низ, BorderLayout.SOUTH);
+        add(down, BorderLayout.SOUTH);
         setLocationRelativeTo(null);
     }
 
@@ -75,7 +75,7 @@ public class MainGUI extends JFrame {
      * Передає список спостерігачам і оновлює графік.
      * Викликається після кожного натискання кнопки.
      */
-    private void оновити() {
+    private void updateG() {
         List<Item> items = calc.getItems();
         stats.update(items);
         sort.update(items);
@@ -87,7 +87,7 @@ public class MainGUI extends JFrame {
      * Висота стовпця залежить від опору відносно максимального в колекції.
      * Червона лінія — середнє від StatsObserver.
      */
-    private void малюємо(Graphics g) {
+    private void draw(Graphics g) {
         List<Item> items = calc.getItems();
         int W = getWidth(), H = getHeight() - 80, pad = 40;
 
